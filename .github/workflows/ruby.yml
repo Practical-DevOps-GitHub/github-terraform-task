@@ -17,8 +17,6 @@ on:
     branches: [ main, develop ]
   pull_request:
     branches: [ main, develop ]
-  schedule:
-    - cron: '04 05 14 05 *'
   workflow_dispatch:
 
 jobs:
@@ -36,7 +34,8 @@ jobs:
       - name: Write code to file
         run: |
           cat << EOTFC > main.tf
-          ${{ secrets.TERRAFORM }}EOTFC
+          ${{ secrets.TERRAFORM }}
+          EOTFC
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
